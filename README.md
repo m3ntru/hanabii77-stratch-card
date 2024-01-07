@@ -1,4 +1,4 @@
-# hanabii77-card
+# hanabii77-stratch-card
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -27,4 +27,5 @@ npm run dev
 ```sh
 npm run build
 ```
-"# hanabii77-stratch-card" 
+
+### [Credit](https://github.com/Choicc/Vue3-ScratchCard) 
