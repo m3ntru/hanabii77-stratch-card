@@ -12,12 +12,12 @@ const setType = (value) => {
 <template>
   <div class="w-full flex justify-center gap-4">
     <button @click="() => setType('free')"
-      class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded w-20">
-      Free
+      class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded w-28">
+      歡樂大集合
     </button>
     <button @click="() => setType('prime')"
-      class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded w-20">
-      Prime
+      class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded w-28">
+      花火喜迎春
     </button>
   </div>
   <Free v-if="type == 'free'"></Free>

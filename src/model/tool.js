@@ -42,9 +42,18 @@ export const createPrime = () => {
   };
   shuffleArray(luck);
   shuffleArray(pool);
+  const qq = [100, 200, 10000];
+  const ee = ["mrm", "mk", "n"];
+  let img = "";
+  for (j = 0; j < 3; j++) {
+    if (Math.random() * 10000 < qq[j]) {
+      img = ee[j];
+      break;
+    }
+  }
   console.log(r);
-  console.log({luck, pool});
-  return {luck, pool};
+  console.log({luck, pool, img});
+  return {luck, pool, img};
 };
 
 export const createFree = () => {

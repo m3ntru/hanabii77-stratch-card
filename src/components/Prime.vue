@@ -3,7 +3,8 @@ import { ref, onMounted, onUnmounted, defineEmits } from "vue";
 import { createPrime } from "@/model/tool"
 import StratchCard from "@/components/StratchCard.vue";
 import imageUrl from '@/assets/img/prime-mask.png'
-import jump from '@/assets/img/jump.gif'
+import mrm from '@/assets/img/mrm.png'
+import mk from '@/assets/img/mk.png'
 
 const data = ref([]);
 const code = ref("777777-077")
@@ -35,8 +36,8 @@ const scratchAll = () => {
   console.log('scratchAll')
 }
 
-const luckPosition = [[63, 27], [155, 27], [247, 27]]
-const poolPosition = [[45, 179], [165, 179], [285, 179], [85, 308], [205, 308], [325, 308], [45, 417], [165, 417], [285, 417]]
+const luckPosition = [[58, 29], [149, 29], [238, 29]]
+const poolPosition = [[47, 179], [165, 179], [282, 179], [85, 308], [202, 308], [320, 308], [47, 417], [165, 417], [282, 417]]
 
 </script>
 
@@ -61,9 +62,13 @@ const poolPosition = [[45, 179], [165, 179], [285, 179], [85, 308], [205, 308], 
               <div class="w-full flex justify-center text-xl leading-10 font-extrabold"> {{ item[1].toUpperCase() }}
               </div>
             </div>
-            <div class="prize-item absolute flex flex-col items-center justify-center w-12 h-12"
-              style="top:330px; left: 62px;">
-              <img :src="jump" />
+            <div v-if="data.img ==='mk'" class="absolute flex flex-col items-center justify-center w-12 h-12"
+              style="width: 100px; top:335px; left: 28px;">
+              <img :src="mk" />
+            </div>
+            <div v-if="data.img ==='mrm'"  class="absolute flex flex-col items-center justify-center w-12 h-12"
+              style="width: 100px; top:335px; left: 28px;">
+              <img :src="mrm" />
             </div>
           </div>
         </StratchCard>
@@ -71,7 +76,7 @@ const poolPosition = [[45, 179], [165, 179], [285, 179], [85, 308], [205, 308], 
 
     </div>
     <button @click="reset" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded w-20">
-      Reset
+      換一張
     </button>
 
   </div>
