@@ -1,5 +1,5 @@
 export const createPrime = () => {
-  const q = [15, 800, 4800, 10000];
+  const q = [30, 900, 4000, 10000];
   const e = ["ur", "ssr", "sr", "r"];
   let r = "";
   let i,j;

@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted, defineEmits } from "vue";
 import { createPrime } from "@/model/tool"
 import StratchCard from "@/components/StratchCard.vue";
 import imageUrl from '@/assets/img/prime-mask.png'
+import n from '@/assets/img/sakuramochi.png'
 import mrm from '@/assets/img/mrm.png'
 import mk from '@/assets/img/mk.png'
 
@@ -62,6 +63,10 @@ const poolPosition = [[47, 179], [165, 179], [282, 179], [85, 308], [202, 308], 
               <div class="w-full flex justify-center text-xl leading-10 font-extrabold"> {{ item[1].toUpperCase() }}
               </div>
             </div>
+            <div v-if="data.img ==='n'" class="absolute flex flex-col items-center justify-center w-12 h-12"
+              style="width: 72px; top:333px; left: 40px;">
+              <img :src="n" />
+            </div>
             <div v-if="data.img ==='mk'" class="absolute flex flex-col items-center justify-center w-12 h-12"
               style="width: 100px; top:335px; left: 28px;">
               <img :src="mk" />
@@ -90,6 +95,7 @@ const poolPosition = [[47, 179], [165, 179], [282, 179], [85, 308], [202, 308], 
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  cursor: url('@/assets/img/10ntd.png') 32 60,auto;
 }
 
 .prize-code {

@@ -71,6 +71,7 @@ const scratchAll = () => {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  cursor: url('@/assets/img/10ntd.png') 32 60,auto;
 }
 
 .prize-code {
