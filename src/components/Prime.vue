@@ -6,9 +6,11 @@ import imageUrl from '@/assets/img/prime-mask.png'
 import n from '@/assets/img/sakuramochi.png'
 import mrm from '@/assets/img/mrm.png'
 import mk from '@/assets/img/mk.png'
+import door from '@/assets/img/powered.png'
 
 const data = ref([]);
 const code = ref("777777-077")
+const powered = ref(false)
 
 const init = () => {
   data.value = createPrime()
@@ -19,6 +21,7 @@ const reset = () => {
   stratchCardRef.value?.reset();
   data.value = createPrime();
   code.value = `777${String(new Date().getTime()).substr(-3, 3)}-${String(Math.floor(Math.random() * 99) + 1).padStart(3, "0")}`
+  powered.value = false;
 };
 
 onMounted(() => {
@@ -63,22 +66,23 @@ const poolPosition = [[47, 179], [165, 179], [282, 179], [85, 308], [202, 308], 
               <div class="w-full flex justify-center text-xl leading-10 font-extrabold"> {{ item[1].toUpperCase() }}
               </div>
             </div>
-            <div v-if="data.img ==='n'" class="absolute flex flex-col items-center justify-center w-12 h-12"
+            <div v-if="data.img === 'n'" class="absolute flex flex-col items-center justify-center w-12 h-12"
               style="width: 72px; top:333px; left: 40px;">
               <img :src="n" />
             </div>
-            <div v-if="data.img ==='mk'" class="absolute flex flex-col items-center justify-center w-12 h-12"
+            <div v-if="data.img === 'mk'" class="absolute flex flex-col items-center justify-center w-12 h-12"
               style="width: 100px; top:335px; left: 28px;">
               <img :src="mk" />
             </div>
-            <div v-if="data.img ==='mrm'"  class="absolute flex flex-col items-center justify-center w-12 h-12"
+            <div v-if="data.img === 'mrm'" class="absolute flex flex-col items-center justify-center w-12 h-12"
               style="width: 100px; top:335px; left: 28px;">
               <img :src="mrm" />
             </div>
           </div>
         </StratchCard>
       </div>
-
+      <div @click="powered = !powered" class="powered absolute">Powered by M3ntru</div>
+      <div v-if="powered" class="powered-img absolute"><img :src="door" /></div>
     </div>
     <button @click="reset" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded w-20">
       換一張
@@ -95,7 +99,7 @@ const poolPosition = [[47, 179], [165, 179], [282, 179], [85, 308], [202, 308], 
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  cursor: url('@/assets/img/10ntd.png') 32 60,auto;
+  cursor: url('@/assets/img/50ntd.png') 32 60, auto;
 }
 
 .prize-code {
@@ -108,6 +112,24 @@ const poolPosition = [[47, 179], [165, 179], [282, 179], [85, 308], [202, 308], 
   font-weight: 700;
   background-color: white;
   user-select: none;
+}
+
+.powered {
+  text-align: left;
+  width: 140px;
+  height: 15px;
+  bottom: 2px;
+  left: 1px;
+  color: rgb(77, 77, 77, 0.4);
+  font-size: 12px;
+  font-weight: 700;
+  user-select: none;
+}
+
+.powered-img {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .prize-area {

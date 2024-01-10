@@ -3,9 +3,11 @@ import { ref, onMounted, onUnmounted, defineEmits } from "vue";
 import { createFree } from "@/model/tool"
 import StratchCard from "@/components/StratchCard.vue";
 import imageUrl from '@/assets/img/free-mask.png'
+import door from '@/assets/img/powered.png'
 
 const data = ref([]);
 const code = ref("777777-077")
+const powered = ref(false)
 
 const init = () => {
   data.value = createFree()
@@ -16,6 +18,7 @@ const reset = () => {
   stratchCardRef.value?.reset();
   data.value = createFree();
   code.value = `777${String(new Date().getTime()).substr(-3, 3)}-${String(Math.floor(Math.random() * 99) + 1).padStart(3, "0")}`
+  powered.value = false;
 };
 
 onMounted(() => {
@@ -54,7 +57,8 @@ const scratchAll = () => {
           </div>
         </StratchCard>
       </div>
-
+      <div @click="powered = !powered" class="powered absolute">Powered by M3ntru</div>
+      <div v-if="powered" class="powered-img absolute"><img :src="door" /></div>
     </div>
     <button @click="reset" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded w-20">
       換一張
@@ -71,7 +75,7 @@ const scratchAll = () => {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  cursor: url('@/assets/img/10ntd.png') 32 60,auto;
+  cursor: url('@/assets/img/10ntd.png') 32 60, auto;
 }
 
 .prize-code {
@@ -84,6 +88,24 @@ const scratchAll = () => {
   font-weight: 700;
   background-color: white;
   user-select: none;
+}
+
+.powered {
+  text-align: right;
+  width: 140px;
+  height: 15px;
+  bottom: 2px;
+  right: 1px;
+  color: rgb(77, 77, 77, 0.4);
+  font-size: 12px;
+  font-weight: 700;
+  user-select: none;
+}
+
+.powered-img {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .prize-area {
