@@ -1,10 +1,17 @@
+const pq = [30, 300, 1300, 10000];
+const fq = [30, 100, 600, 10000];
+export const printRate = () => {
+  console.log({pq, fq});
+};
+
 export const createPrime = () => {
-  const q = [30, 900, 4000, 10000];
+  const q = pq;
   const e = ["ur", "ssr", "sr", "r"];
   let r = "";
-  let i,j;
+  let i, j;
+  const a = Math.random() * 10000;
   for (j = 0; j < 4; j++) {
-    if (Math.random() * 10000 < q[j]) {
+    if (a < q[j]) {
       r = e[j];
       break;
     }
@@ -57,12 +64,13 @@ export const createPrime = () => {
 };
 
 export const createFree = () => {
-  const q = [30, 150, 1000, 10000];
+  const q = fq;
   const e = ["ssr", "sr", "r", "n"];
   let j;
   let r = "";
+  const a = Math.random() * 10000;
   for (j = 0; j < 4; j++) {
-    if (Math.random() * 10000 < q[j]) {
+    if (a < q[j]) {
       r = e[j];
       break;
     }

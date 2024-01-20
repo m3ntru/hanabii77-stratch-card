@@ -5,6 +5,7 @@ import StratchCard from "@/components/StratchCard.vue";
 import imageUrl from '@/assets/img/free-mask.png'
 import door from '@/assets/img/powered.png'
 
+const emit = defineEmits(['next'])
 const data = ref([]);
 const code = ref("777777-077")
 const powered = ref(false)
@@ -14,11 +15,12 @@ const init = () => {
   code.value = `777${String(new Date().getTime()).substr(-3, 3)}-${String(Math.floor(Math.random() * 99) + 1).padStart(3, "0")}`
 };
 ; const stratchCardRef = ref()
-const reset = () => {
+const reset = (add) => {
   stratchCardRef.value?.reset();
   data.value = createFree();
   code.value = `777${String(new Date().getTime()).substr(-3, 3)}-${String(Math.floor(Math.random() * 99) + 1).padStart(3, "0")}`
   powered.value = false;
+  if (add) emit("next");
 };
 
 onMounted(() => {
@@ -60,10 +62,28 @@ const scratchAll = () => {
       <div @click="powered = !powered" class="powered absolute">Powered by M3ntru</div>
       <div v-if="powered" class="powered-img absolute"><img :src="door" /></div>
     </div>
-    <button @click="reset" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded w-20">
-      換一張
-    </button>
-
+    <div class="flex justify-between items-center gap-12">
+      <button @click="() => reset(false)" class=" text-white font-bold py-2 px-2 rounded">
+        <svg class="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 4 23 10 17 10" />
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+        </svg>
+      </button>
+      <button @click="() => reset(true)"
+        class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded w-20">
+        下一張
+      </button>
+      <div>
+        <button class="opacity-0 cursor-default font-bold py-2 px-2 rounded">
+          <svg class="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10" />
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -100,6 +120,7 @@ const scratchAll = () => {
   font-size: 12px;
   font-weight: 700;
   user-select: none;
+  cursor: help;
 }
 
 .powered-img {
